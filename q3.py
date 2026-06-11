@@ -19,12 +19,12 @@ class Graph:
         # Não iterar sobre o array original pois vamos alteralo durante a iteração
         items = [*self.data.items()]
 
-        for k, v in items:
-            if len(v) == 2:
-                # Pegar valores atualizados
-                true_val = self.data[k]
+        for k, _ in items:
+            # Removemos nodes que possuem somente duas conexões (corredores)
+            edges = self.data[k] # Pegar valor atualizado (ja que alteramos dentro do loop)
+            if len(edges) == 2:
                 self.remove_node(k)
-                self.add_edge(list(true_val))
+                self.add_edge(list(edges))
         # Se nessa função nós removessemos todos os nodes com 1 conexão (becos sem saida), com
         # exeção do inicio e do fim, resolveriamos o labirinto. Apesar de ser uma forma bem ineficiente 
 
@@ -139,6 +139,8 @@ def test_graph(graph, start, finish, name):
     
     print(f"+ Num edges \t: {len(graph.get_all_edges(False))}")  
     print(f"+ Num nodes \t: {len(graph.get_all_nodes())}") 
+    print(f"+ Start node \t: {start}")  
+    print(f"+ FInish node\t: {finish}") 
     (bfs, bfs_seen), bfs_delta = timed(lambda: graph.bfs(start, finish))
     (dfs, dfs_seen), dfs_delta = timed(lambda: graph.dfs(start, finish))
     print(f"+ BFS solution \t: {len(bfs)} nodes")
@@ -166,18 +168,19 @@ if __name__ == "__main__":
     graph_o = Graph(edges, True)
     path = graph.bfs(start, finish)
 
-    def print_map(name = "MAZE", allnodes="  ", optimized_nodes="  ", ipath="  ", ifinish="⭐", istart="🔵",):   
+    def print_map(name = "MAZE", allnodes=None, optimized_nodes=None, ipath=None, ifinish="⭐", istart="🔵",):   
 
         print("______________________________________")
         print(f" ---- {name} ----")
 
-        CHAR_MAP={
-            **{k:allnodes for k in graph.get_all_nodes()}, 
-            **{k:optimized_nodes for k in graph_o.get_all_nodes()}, 
-            **{k:ipath for k in path}, 
-            start: istart,
-            finish: ifinish ,
-        }
+        CHAR_MAP={ start: istart, finish: ifinish}
+        if allnodes:
+            CHAR_MAP = {**CHAR_MAP, **{k:allnodes for k in graph.get_all_nodes()} }
+        if optimized_nodes:
+            CHAR_MAP = {**CHAR_MAP, **{k:optimized_nodes for k in graph_o.get_all_nodes()} }
+        if ipath:
+            CHAR_MAP = {**CHAR_MAP, **{k:ipath for k in path} }
+
         print_maze(matrix, CHAR_MAP)
         print("-----------------------------------------")
 
