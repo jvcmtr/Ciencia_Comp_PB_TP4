@@ -1,6 +1,12 @@
 from q2_word_usage import get_most_used, get_valid_chars
 import time
 
+# Lista não exaustiva de caracteres que podem aparecer nas palavras mais comuns
+# list("abcdefghijklmnopqrstuvwxyzçáàâãäªéèêẽëíìîĩïóòôõöºúùũûüñ")       
+VALID_CHARS = get_valid_chars()                                 # idx to char
+LOOKUP = { VALID_CHARS[i]:i for i in range(len(VALID_CHARS))}   # char to idx
+
+
 class TrieNode:
     def __init__(self, is_terminal=False):
         self.children = [None] * len(VALID_CHARS)
