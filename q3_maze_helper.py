@@ -2,6 +2,22 @@
 
 from PIL import Image, ImageEnhance
 
+# ===================================================================================
+#
+#   Dado que o enunciado não indicou sinal verde, amarelo ou vermelho para uso de IA,
+#   Foi tomada a liberdade por parte do aluno de usar a inteligencia artificial SOMENTE PARA 
+#   OS CODIGOS QUE NÃO SE RELACIONAM A COMPETENCIAS DA DISCIPLINA. O uso da IA neste trabalho 
+#   tem somente o objetivo de agregar ao produto final e não de suplementar o conhecimento do 
+#   aluno a respeito da materia. 
+#
+#   Os prompts que geraram os codigos estão devidamente apontados no decorrer deste arquivo. Nota-se
+#   Que a solução foi projetada pelo aluno e a IA teve somente o papel de implementar os trechos 
+#   de codigo. Nota-se também que "Feito com auxilio de IA" implica que existe alterações do aluno 
+#   sobre os codigos inicialmente gerados por IA (não simplesmente fez Ctr+C Ctrl+V). 
+# 
+# ===================================================================================
+
+
 IMAGE_PATH = "q3_maze.png"
 
 def load_to_matrix(image_path, threshold=200, contrast_factor=2.0):
@@ -36,6 +52,7 @@ def load_to_matrix(image_path, threshold=200, contrast_factor=2.0):
         
         return boolean_matrix
 
+ 
 # Funções criadas com auxilio de IA
 # Prompt utilizado:
 # """ 
@@ -91,7 +108,7 @@ def reduce_matrix(matrix):
     return _trim(mat)
 
 
-# As funções a seguir foram escritas pelo aluno:
+# AS FUNÇÕES A SEGUIR FORAM ESCRITAS PELO ALUNO
 
 def _trim(data):
     mat = [row[:] for row in data]

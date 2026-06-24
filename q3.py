@@ -46,12 +46,13 @@ class Graph:
         return self.data[node]
 
     def bfs(self, start, finish):
-        # Identico ao DFS, mas é LIFO em vez de FIFO
+        # Identico ao DFS, mas é FIFO em vez de LIFO (fila em vez de pilha)
         seen = {}
         to_see = [ (start, [])  ] # (node, caminho)
         
         while len(to_see) > 0:
-            node, path = to_see.pop()
+            node, path = to_see[0]
+            to_see = to_see[1:]
             seen[node] = True
 
             if node == finish:
@@ -66,13 +67,12 @@ class Graph:
         return None, len(seen.items())
 
     def dfs(self, start, finish):
-        # Identico ao BFS, mas é FIFO em vez de LIFO (fila em vez de pilha)
+        # Identico ao BFS, mas é LIFO em vez de FIFO (pilha em vez de fila)
         seen = {}
         to_see = [ (start, [])  ] # (node, caminho)
         
         while len(to_see) > 0:
-            node, path = to_see[0]
-            to_see = to_see[1:]
+            node, path = to_see.pop()
             seen[node] = True
 
             if node == finish:

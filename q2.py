@@ -169,3 +169,5 @@ if __name__ == "__main__":
     t = test("3", 1000, 10000, "ouro", "far")
     t = test("4", 10000, 10000, "python", "compu")
 
+    print("\n".join(get_most_used(100)))
+
