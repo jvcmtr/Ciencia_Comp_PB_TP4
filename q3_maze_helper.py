@@ -10,10 +10,11 @@ from PIL import Image, ImageEnhance
 #   tem somente o objetivo de agregar ao produto final e não de suplementar o conhecimento do 
 #   aluno a respeito da materia. 
 #
-#   Os prompts que geraram os codigos estão devidamente apontados no decorrer deste arquivo. Nota-se
-#   Que a solução foi projetada pelo aluno e a IA teve somente o papel de implementar os trechos 
-#   de codigo. Nota-se também que "Feito com auxilio de IA" implica que existe alterações do aluno 
-#   sobre os codigos inicialmente gerados por IA (não simplesmente fez Ctr+C Ctrl+V). 
+#   Os prompts que geraram os codigos estão devidamente apontados no decorrer deste arquivo. 
+#   Nota-se que nestes casos A SOLUÇÃO FOI PROJETADA PELO ALUNO e a IA teve somente o papel de
+#   implementar o codigo. Nota-se também que "Feito com auxilio de IA" implica a presença de 
+#   alterações do aluno sobre os codigos inicialmente gerados por IA (não foi realizado 
+#   simplesmente Ctr+C Ctrl+V). 
 # 
 # ===================================================================================
 
@@ -108,6 +109,8 @@ def reduce_matrix(matrix):
     return _trim(mat)
 
 
+
+# =============================================================================
 # AS FUNÇÕES A SEGUIR FORAM ESCRITAS PELO ALUNO
 
 def _trim(data):
